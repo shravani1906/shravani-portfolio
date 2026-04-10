@@ -791,6 +791,11 @@ p.subtitle {
     grid-template-columns: 1fr;
   }
 
+  .cert-card h3 {
+    margin-bottom: 0.8rem;
+    font-size: 1.25rem;
+  }
+
   #certifications {
     padding: 4rem 1.5rem;
   }
