@@ -31,6 +31,7 @@ export default function Skills() {
       </h2>
 
       <div className="skills-grid">
+        {/* Frontend */}
         <div className="skill-category" data-aos="fade-right">
           <h3>Frontend</h3>
           <div className="skill-item">
@@ -80,6 +81,7 @@ export default function Skills() {
           </div>
         </div>
 
+        {/* Backend & Others - FIXED */}
         <div className="skill-category" data-aos="fade-left">
           <h3>Backend & Others</h3>
           <div className="skill-item">
@@ -103,19 +105,21 @@ export default function Skills() {
           <div className="skill-item">
             <div className="skill-header">
               <span>MySQL</span>
-              <span>75%</span>
+              <span>85%</span>
             </div>
             <div className="progress">
-              <div className="progress-bar" data-width="75"></div>
+              <div className="progress-bar" data-width="85"></div>{" "}
+              {/* ← Fixed */}
             </div>
           </div>
           <div className="skill-item">
             <div className="skill-header">
               <span>Python / Django</span>
-              <span>70%</span>
+              <span>90%</span>
             </div>
             <div className="progress">
-              <div className="progress-bar" data-width="70"></div>
+              <div className="progress-bar" data-width="90"></div>{" "}
+              {/* ← Fixed */}
             </div>
           </div>
           <div className="skill-item">
@@ -129,15 +133,30 @@ export default function Skills() {
           </div>
         </div>
       </div>
+      {/* Professional & Soft Skills */}
+      <div className="soft-skills-section">
+        <h3>Professional & Soft Skills</h3>
 
-      {/* Download CV Button - Added here */}
+        <div className="soft-skills-tags">
+          <span className="skill-tag">Creative Thinking</span>
+          <span className="skill-tag">Problem Solving</span>
+          <span className="skill-tag">Leadership</span>
+          <span className="skill-tag">Communication</span>
+          <span className="skill-tag">Emotional Intelligence</span>
+          <span className="skill-tag">Critical Thinking</span>
+          <span className="skill-tag">Professional Etiquette</span>
+        </div>
+      </div>
+
+      {/* View CV Button - Opens PDF in new tab */}
       <div className="cv-download">
         <a
-          href="/Shravani_JamsandekarCV.pdf"
-          download="Shravani_JamsandekarCV.pdf"
+          href="/SHRAVANI_JAMSANDEKAR_CVFINAL.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
           className="btn cv-btn"
         >
-          Download CV
+          View CV
         </a>
       </div>
     </section>

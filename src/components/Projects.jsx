@@ -9,6 +9,19 @@ export default function Projects() {
 
       <div className="projects-grid">
         <ProjectCard
+          title="Wick&Weave - E-commerce Platform for Handcrafted Goods"
+          description="Full-stack e-commerce platform with React.js frontend, Node.js/Express backend, and MongoDB database, featuring user authentication, product management, and secure payment integration."
+          techs={[
+            "Tailwind CSS",
+            "React.js",
+            "Redux Toolkit",
+            "Node.js",
+            "Express",
+            "MongoDB",
+          ]}
+          delay={300}
+        />
+        <ProjectCard
           title="Cosmo Learn – Interactive Space Learning Platform"
           description="Full-stack space learning platform with 3D planet exploration and cinematic UI using Three.js."
           techs={[

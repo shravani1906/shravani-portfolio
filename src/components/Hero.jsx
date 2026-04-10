@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import profile from "../assets/images/profile.jpg"; // ← Put your real photo here
+import profile from "../assets/images/profile.jpeg"; // ← Put your real photo here
 import Typed from "typed.js";
 
 export default function Hero() {

@@ -8,7 +8,9 @@ export default function Services() {
       <div className="services-grid">
         {/* Web Design */}
         <div className="project-card" data-aos="fade-up" data-aos-delay="500">
-          <h3>🎨 Web Design</h3>
+          <h3>
+            <i class="fa-brands fa-figma"></i> Web Design
+          </h3>
           <p>
             Modern, responsive, conversion-focused websites that look premium
             and load fast.
@@ -25,7 +27,9 @@ export default function Services() {
 
         {/* Full-Stack Web Development */}
         <div className="project-card" data-aos="fade-up" data-aos-delay="600">
-          <h3>💻 Full-Stack Web Development</h3>
+          <h3>
+            <i class="fa-brands fa-windows"></i> Full-Stack Web Development
+          </h3>
           <p>
             MERN stack websites &amp; web apps built from scratch or migrated.
           </p>
@@ -41,7 +45,9 @@ export default function Services() {
 
         {/* Mobile App Development */}
         <div className="project-card" data-aos="fade-up" data-aos-delay="700">
-          <h3>📱 Mobile App Development</h3>
+          <h3>
+            <i class="fa-brands fa-android"></i> Mobile App Development
+          </h3>
           <p>React Native + Expo apps for iOS &amp; Android.</p>
           <ul>
             <li>Cross-platform Apps</li>

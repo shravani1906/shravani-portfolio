@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import logo from "../assets/images/logo.png";
 
 export default function Navbar() {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
@@ -12,34 +13,48 @@ export default function Navbar() {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  const toggleTheme = () => {
+  const toggleTheme = () =>
     setTheme((prev) => (prev === "dark" ? "light" : "dark"));
-  };
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
   const closeMenu = () => setMenuOpen(false);
 
-  /* 🔥 CLOSE ON OUTSIDE CLICK */
+  // Smooth Scroll Function
+  const smoothScrollTo = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = 100; // Adjust this if needed (navbar height + padding)
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition - bodyRect - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+    closeMenu();
+  };
+
+  // Close menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (
         menuRef.current &&
         !menuRef.current.contains(e.target) &&
+        hamburgerRef.current &&
         !hamburgerRef.current.contains(e.target)
       ) {
         setMenuOpen(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  /* 🔥 CLOSE ON SCROLL */
+  // Active nav link on scroll
   useEffect(() => {
     const handleScroll = () => {
-      setMenuOpen(false);
-
       const sections = document.querySelectorAll("section[id]");
       let current = "";
 
@@ -66,49 +81,142 @@ export default function Navbar() {
     <nav>
       <div className="nav-container">
         {/* Logo */}
-        <a href="#home" className="logo">
-          <i className="fa-solid fa-s"></i>
+        <a
+          href="#home"
+          className="logo"
+          onClick={(e) => {
+            e.preventDefault();
+            smoothScrollTo("home");
+          }}
+        >
+          <img src={logo} alt="Shravani Jamsandekar" className="logo-img" />
         </a>
 
-        {/* NAV LINKS */}
-        <ul
-          ref={menuRef}
-          className={`nav-links ${menuOpen ? "active" : ""}`}
-          onMouseLeave={() => setMenuOpen(false)} // 🔥 CLOSE ON HOVER OUT
-        >
+        {/* Nav Links - Icons Only */}
+        <ul ref={menuRef} className={`nav-links ${menuOpen ? "active" : ""}`}>
           <li>
-            <a href="#home" onClick={closeMenu}>
-              Home
+            <a
+              href="#home"
+              onClick={(e) => {
+                e.preventDefault();
+                smoothScrollTo("home");
+              }}
+              title="Home"
+            >
+              <i className="fa-solid fa-house-chimney"></i>
             </a>
           </li>
           <li>
-            <a href="#about" onClick={closeMenu}>
-              About
+            <a
+              href="#about"
+              onClick={(e) => {
+                e.preventDefault();
+                smoothScrollTo("about");
+              }}
+              title="About"
+            >
+              <i className="fa-regular fa-user"></i>
             </a>
           </li>
           <li>
-            <a href="#services" onClick={closeMenu}>
-              Services
+            <a
+              href="#experience"
+              onClick={(e) => {
+                e.preventDefault();
+                smoothScrollTo("experience");
+              }}
+              title="Experience"
+            >
+              <i className="fa-solid fa-briefcase"></i>
             </a>
           </li>
           <li>
-            <a href="#projects" onClick={closeMenu}>
-              Projects
+            <a
+              href="#certifications"
+              onClick={(e) => {
+                e.preventDefault();
+                smoothScrollTo("certifications");
+              }}
+              title="Certifications"
+            >
+              <i className="fa-solid fa-award"></i>
             </a>
           </li>
           <li>
-            <a href="#skills" onClick={closeMenu}>
-              Skills
+            <a
+              href="#education"
+              onClick={(e) => {
+                e.preventDefault();
+                smoothScrollTo("education");
+              }}
+              title="Education"
+            >
+              <i className="fa-solid fa-graduation-cap"></i>
             </a>
           </li>
           <li>
-            <a href="#contact" onClick={closeMenu}>
-              Contact
+            <a
+              href="#services"
+              onClick={(e) => {
+                e.preventDefault();
+                smoothScrollTo("services");
+              }}
+              title="Services"
+            >
+              <i className="fa-solid fa-handshake"></i>
+            </a>
+          </li>
+          <li>
+            <a
+              href="#projects"
+              onClick={(e) => {
+                e.preventDefault();
+                smoothScrollTo("projects");
+              }}
+              title="Projects"
+            >
+              <i className="fa-solid fa-folder-open"></i>
+            </a>
+          </li>
+          <li>
+            <a
+              href="#skills"
+              onClick={(e) => {
+                e.preventDefault();
+                smoothScrollTo("skills");
+              }}
+              title="Skills"
+            >
+              <i className="fa-solid fa-tools"></i>
+            </a>
+          </li>
+          <li>
+            <a
+              href="#articles"
+              onClick={(e) => {
+                e.preventDefault();
+                smoothScrollTo("articles");
+              }}
+              title="Articles"
+            >
+              <i className="fa-solid fa-newspaper"></i>
+            </a>
+          </li>
+          <li>
+            <a
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                smoothScrollTo("contact");
+              }}
+              title="Contact"
+            >
+              <i className="fa-solid fa-envelope"></i>
             </a>
           </li>
         </ul>
 
-        {/* CONTROLS */}
+        {/* Right Controls */}
         <div className="nav-controls">
           <button
             className="theme-toggle"
