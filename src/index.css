@@ -1390,19 +1390,15 @@ footer {
   }
 
   /* ===== ARTICLES ===== */
-  /* ===== ARTICLES FIX ===== */
   .articles-container {
-    display: flex;
-    overflow-x: auto;
-    gap: 1rem;
-    padding-bottom: 1rem;
-    scroll-snap-type: x mandatory;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem;
   }
 
   .article-card {
-    min-width: 85%;
-    flex-shrink: 0;
-    scroll-snap-align: start;
+    max-height: 420px;
+    overflow-y: auto;
   }
   /* ===== CONTACT ===== */
   form {
