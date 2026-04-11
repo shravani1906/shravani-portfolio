@@ -23,7 +23,7 @@ export default function About() {
 
           <p>
             During my present internship at{" "}
-            <strong>Rapid Softech Pvt Ltd</strong>, I am working on full-stack
+            <strong>Rapid SofLogic Pvt Ltd</strong>, I am working on full-stack
             applications, built and integrated RESTful APIs, improved UI
             responsiveness, and optimized performance. I take pride in writing
             clean, maintainable code and following industry best practices.

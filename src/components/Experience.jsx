@@ -11,7 +11,7 @@ export default function Experience() {
           <div className="company-header">
             <h3>Full-Stack Intern</h3>
             <span className="company">
-              Rapidsoft Technologies Pvt Ltd <span> Thane, Mumbai</span>
+              Rapid SoftLogic Pvt Ltd <span> Thane, Mumbai</span>
             </span>
             <span className="date">July 2025 - Present • On-Site</span>
           </div>
