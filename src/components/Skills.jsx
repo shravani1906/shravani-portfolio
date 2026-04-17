@@ -151,7 +151,7 @@ export default function Skills() {
       {/* View CV Button - Opens PDF in new tab */}
       <div className="cv-download">
         <a
-          href="/SHRAVANI_JAMSANDEKAR_CVFINAL.pdf"
+          href="/SJCv.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="btn cv-btn"
