@@ -19,11 +19,10 @@ export default function Navbar() {
   const toggleMenu = () => setMenuOpen((prev) => !prev);
   const closeMenu = () => setMenuOpen(false);
 
-  // Smooth Scroll Function
   const smoothScrollTo = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      const offset = 100; // Adjust this if needed (navbar height + padding)
+      const offset = 100;
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition - bodyRect - offset;
@@ -36,7 +35,6 @@ export default function Navbar() {
     closeMenu();
   };
 
-  // Close menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (
@@ -52,7 +50,6 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Active nav link on scroll
   useEffect(() => {
     const handleScroll = () => {
       const sections = document.querySelectorAll("section[id]");
@@ -77,10 +74,26 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const navItems = [
+    { id: "home", icon: "fa-solid fa-house-chimney", label: "Home" },
+    { id: "about", icon: "fa-regular fa-user", label: "About" },
+    { id: "experience", icon: "fa-solid fa-briefcase", label: "Experience" },
+    {
+      id: "certifications",
+      icon: "fa-solid fa-award",
+      label: "Certifications",
+    },
+    { id: "education", icon: "fa-solid fa-graduation-cap", label: "Education" },
+    { id: "services", icon: "fa-solid fa-handshake", label: "Services" },
+    { id: "projects", icon: "fa-solid fa-folder-open", label: "Projects" },
+    { id: "skills", icon: "fa-solid fa-tools", label: "Skills" },
+    { id: "articles", icon: "fa-solid fa-newspaper", label: "Articles" },
+    { id: "contact", icon: "fa-solid fa-envelope", label: "Contact" },
+  ];
+
   return (
     <nav>
       <div className="nav-container">
-        {/* Logo */}
         <a
           href="#home"
           className="logo"
@@ -92,131 +105,23 @@ export default function Navbar() {
           <img src={logo} alt="Shravani Jamsandekar" className="logo-img" />
         </a>
 
-        {/* Nav Links - Icons Only */}
         <ul ref={menuRef} className={`nav-links ${menuOpen ? "active" : ""}`}>
-          <li>
-            <a
-              href="#home"
-              onClick={(e) => {
-                e.preventDefault();
-                smoothScrollTo("home");
-              }}
-              title="Home"
-            >
-              <i className="fa-solid fa-house-chimney"></i>
-            </a>
-          </li>
-          <li>
-            <a
-              href="#about"
-              onClick={(e) => {
-                e.preventDefault();
-                smoothScrollTo("about");
-              }}
-              title="About"
-            >
-              <i className="fa-regular fa-user"></i>
-            </a>
-          </li>
-          <li>
-            <a
-              href="#experience"
-              onClick={(e) => {
-                e.preventDefault();
-                smoothScrollTo("experience");
-              }}
-              title="Experience"
-            >
-              <i className="fa-solid fa-briefcase"></i>
-            </a>
-          </li>
-          <li>
-            <a
-              href="#certifications"
-              onClick={(e) => {
-                e.preventDefault();
-                smoothScrollTo("certifications");
-              }}
-              title="Certifications"
-            >
-              <i className="fa-solid fa-award"></i>
-            </a>
-          </li>
-          <li>
-            <a
-              href="#education"
-              onClick={(e) => {
-                e.preventDefault();
-                smoothScrollTo("education");
-              }}
-              title="Education"
-            >
-              <i className="fa-solid fa-graduation-cap"></i>
-            </a>
-          </li>
-          <li>
-            <a
-              href="#services"
-              onClick={(e) => {
-                e.preventDefault();
-                smoothScrollTo("services");
-              }}
-              title="Services"
-            >
-              <i className="fa-solid fa-handshake"></i>
-            </a>
-          </li>
-          <li>
-            <a
-              href="#projects"
-              onClick={(e) => {
-                e.preventDefault();
-                smoothScrollTo("projects");
-              }}
-              title="Projects"
-            >
-              <i className="fa-solid fa-folder-open"></i>
-            </a>
-          </li>
-          <li>
-            <a
-              href="#skills"
-              onClick={(e) => {
-                e.preventDefault();
-                smoothScrollTo("skills");
-              }}
-              title="Skills"
-            >
-              <i className="fa-solid fa-tools"></i>
-            </a>
-          </li>
-          <li>
-            <a
-              href="#articles"
-              onClick={(e) => {
-                e.preventDefault();
-                smoothScrollTo("articles");
-              }}
-              title="Articles"
-            >
-              <i className="fa-solid fa-newspaper"></i>
-            </a>
-          </li>
-          <li>
-            <a
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                smoothScrollTo("contact");
-              }}
-              title="Contact"
-            >
-              <i className="fa-solid fa-envelope"></i>
-            </a>
-          </li>
+          {navItems.map((item) => (
+            <li key={item.id}>
+              <a
+                href={`#${item.id}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  smoothScrollTo(item.id);
+                }}
+                title={item.label}
+              >
+                <i className={item.icon}></i>
+              </a>
+            </li>
+          ))}
         </ul>
 
-        {/* Right Controls */}
         <div className="nav-controls">
           <button
             className="theme-toggle"
@@ -237,6 +142,140 @@ export default function Navbar() {
           </button>
         </div>
       </div>
+
+      <style>{`
+        nav {
+          position: sticky;
+          top: 0;
+          z-index: 100;
+          background: rgba(10, 10, 14, 0.6);
+          backdrop-filter: blur(14px);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        nav .nav-container {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          max-width: 1100px;
+          margin: 0 auto;
+          padding: 0.7rem 1.5rem;
+        }
+
+        nav .logo-img {
+          height: 36px;
+          width: auto;
+        }
+
+        nav .nav-links {
+          display: flex;
+          align-items: center;
+          gap: 0.3rem;
+          list-style: none;
+          margin: 0;
+          padding: 0.3rem;
+          border-radius: 999px;
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        nav .nav-links a {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          color: var(--text-secondary, #999);
+          font-size: 0.9rem;
+          text-decoration: none;
+          transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+        }
+
+        nav .nav-links a:hover {
+          background: rgba(108, 92, 231, 0.12);
+          color: var(--accent, #6c5ce7);
+          transform: translateY(-2px);
+        }
+
+        nav .nav-links a.active {
+          background: var(--accent, #6c5ce7);
+          color: #fff;
+        }
+
+        nav .nav-controls {
+          display: flex;
+          align-items: center;
+          gap: 0.6rem;
+        }
+
+        nav .theme-toggle,
+        nav .hamburger {
+          width: 38px;
+          height: 38px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.04);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          color: inherit;
+          cursor: pointer;
+          transition: border-color 0.25s ease, transform 0.25s ease;
+        }
+
+        nav .theme-toggle:hover,
+        nav .hamburger:hover {
+          border-color: var(--accent, #6c5ce7);
+          transform: translateY(-2px);
+        }
+
+        nav .hamburger {
+          display: none;
+        }
+
+        @media (max-width: 768px) {
+          nav .nav-links {
+            position: fixed;
+            top: 64px;
+            right: 1.5rem;
+            flex-direction: column;
+            width: 200px;
+            padding: 0.8rem;
+            border-radius: 16px;
+            background: rgba(10, 10, 14, 0.95);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transform: translateY(-12px);
+            opacity: 0;
+            pointer-events: none;
+            transition: transform 0.25s ease, opacity 0.25s ease;
+          }
+
+          nav .nav-links.active {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+          }
+
+          nav .nav-links li {
+            width: 100%;
+          }
+
+          nav .nav-links a {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            justify-content: flex-start;
+            gap: 0.7rem;
+            padding: 0.6rem 0.8rem;
+          }
+
+          nav .hamburger {
+            display: flex;
+          }
+        }
+      `}</style>
     </nav>
   );
 }
